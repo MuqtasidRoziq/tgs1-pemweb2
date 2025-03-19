@@ -1,1 +1,1 @@
-link blog : [text](https://muqtasidroziq1.blogspot.com/2025/03/pertemuan-1-instalasi-laravel-12.html)
+link blog : [Blog Saya](https://muqtasidroziq1.blogspot.com/2025/03/pertemuan-1-instalasi-laravel-12.html)
