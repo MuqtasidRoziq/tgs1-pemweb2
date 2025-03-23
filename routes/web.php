@@ -4,39 +4,32 @@ use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
 Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+    $title = 'Homepage';
+    return view('web.homepage',['title'=>$title ] );
+});
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-Route::get('/produk', function(){
-    return "<h1>ini halaman product</h1>";
+Route::get('produk', function(){
+    $title = 'Produk';
+    return view('web.products' , ['title'=>$title]);
 });
     
-Route::get('/detail-produk/{$id}', function(){
-    return '<h1>ini halaman detail-produk {$id} </h1>';
+Route::get('categories-male', function(){
+    $title = 'Categories Male';
+    return view('web.categories-male', ['title'=>$title]);
 });
-    
-Route::get('/keranjang', function(){
-    return '<h1>ini halaman keranjang</h1>';
+
+Route::get('categories-female', function(){
+    $title = 'Categories Female';
+    return view('web.categories-female', ['title'=>$title]);
 });
-    
-Route::get('/search', function(){
-    return '<h1>ini halaman search</h1>';
-});
-    
-Route::get('/chekout', function(){
-    return '<h1>ini halaman chekout</h1>';
-});
-    
-Route::get('/kategori', function(){
-    return '<h1>ini halaman kategori</h1>';
-});
-    
-Route::get('/kategori/{$id}', function(){
-    return '<h1>ini halaman kategori {$id}</h1>';
+
+Route::get('categories-kids', function(){
+    $title = 'Categories Kids';
+    return view('web.categories-kids', ['title'=>$title]);
 });
 
 Route::middleware(['auth'])->group(function () {
