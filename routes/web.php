@@ -1,43 +1,28 @@
 <?php
 
+use App\Http\Controllers\HomepageController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
-Route::get('/', function () {
-    $title = 'Homepage';
-    return view('web.homepage',['title'=>$title ] );
-});
+Route::get('/', [HomepageController::class, 'index']);
+Route::get('produk', [HomepageController::class, 'produk']);  
+Route::get('detail-product/{slug}', [HomepageController::class, 'detailProduct']);
+Route::get('cart', [HomepageController::class, 'cart']);
+Route::get('checkout', [HomepageController::class, 'checkout']);
+Route::get('categories-male', [HomepageController::class, 'categoriesMale']);  
+Route::get('categories-female', [HomepageController::class, 'categoriesFemale']);  
+Route::get('categories-kids', [HomepageController::class, 'categoriesKids']);  
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
-
-Route::get('produk', function(){
-    $title = 'Produk';
-    return view('web.products' , ['title'=>$title]);
-});
+// Route::view('dashboard', 'dashboard')
+//     ->middleware(['auth', 'verified'])
+//     ->name('dashboard');
     
-Route::get('categories-male', function(){
-    $title = 'Categories Male';
-    return view('web.categories-male', ['title'=>$title]);
-});
+// Route::middleware(['auth'])->group(function () {
+//     Route::redirect('settings', 'settings/profile');
 
-Route::get('categories-female', function(){
-    $title = 'Categories Female';
-    return view('web.categories-female', ['title'=>$title]);
-});
-
-Route::get('categories-kids', function(){
-    $title = 'Categories Kids';
-    return view('web.categories-kids', ['title'=>$title]);
-});
-
-Route::middleware(['auth'])->group(function () {
-    Route::redirect('settings', 'settings/profile');
-
-    Volt::route('settings/profile', 'settings.profile')->name('settings.profile');
-    Volt::route('settings/password', 'settings.password')->name('settings.password');
-    Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
-});
+//     Volt::route('settings/profile', 'settings.profile')->name('settings.profile');
+//     Volt::route('settings/password', 'settings.password')->name('settings.password');
+//     Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
+// });
 
 require __DIR__.'/auth.php';
